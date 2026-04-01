@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c4d9f88-a27f-4f2e-ac6c-38c58de92e99" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameBoard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/MatchableSpawnType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/MatchableSpawnType.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.tap-match/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tap-match/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Default Game Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Default Game Settings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameBoard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Matchable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Matchable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +26,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Data/GameSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Data/MatchableType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/MatchableSpawnType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIBoardAspectRatioFitter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIBoardGridLayout.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIBoardManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIMatchable.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -94,6 +104,7 @@
       <updated>1774963401905</updated>
       <workItem from="1774963411169" duration="9258000" />
       <workItem from="1774972931518" duration="639000" />
+      <workItem from="1775040131856" duration="11296000" />
     </task>
     <servers />
   </component>

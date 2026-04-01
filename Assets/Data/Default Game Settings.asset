@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b779400d7745d4491f6a1f42974c95, type: 3}
   m_Name: Default Game Settings
   m_EditorClassIdentifier: Assembly-CSharp::GameSettings
-  boardSize: {x: 5, y: 5}
+  boardSize: {x: 10, y: 7}
   matchableTypes:
   - color: {r: 1, g: 0, b: 0, a: 1}
-  - color: {r: 0, g: 1, b: 0.25, a: 1}
-  - color: {r: 0.08333349, g: 0, b: 1, a: 1}
+  - color: {r: 1, g: 0.8987113, b: 0, a: 1}
+  - color: {r: 1, g: 0, b: 0.89224863, a: 1}

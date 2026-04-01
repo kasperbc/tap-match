@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Handles logic for the tile grid.
@@ -21,7 +23,7 @@ public class GameBoard
         {
             if (_gameBoard == null)
                 return new Vector2Int(0, 0);
-            return new Vector2Int(_gameBoard.Length, _gameBoard[0].Length);
+            return new Vector2Int(_gameBoard[0].Length, _gameBoard.Length);
         }
     }
 
@@ -89,7 +91,7 @@ public class GameBoard
     {
         if (!IsValidPosition(x, y))
             return true;
-
+        
         return GetMatchableAtPosition(x, y) == null;
     }
 
@@ -144,11 +146,18 @@ public class GameBoard
         
         return newMatchables.ToArray();
     }
-
+    
+    /// <summary>
+    /// Recursively searches the adjacent tiles (from the coordinates provided) for matchables of the same type.
+    /// </summary>
+    /// <returns>Positions of connected matchables in grid, (0,0) being top left</returns>
     public Vector2Int[] GetConnectedMatchablePositionsAt(int x, int y)
     {
         if (TileIsEmptyOrInvalid(x, y))
+        {
+            Debug.LogError("Tile position is invalid!");
             return null;
+        }
         
         List<Vector2Int> connectedPositions = new List<Vector2Int> { new(x,y) };
         
@@ -198,22 +207,20 @@ public class GameBoard
             // if new connections were not found, we are done
             if (newConnections.Count <= 0)
                 break;
-            else
-            {
-                foreach (var newConnection in newConnections)
-                    connectedPositions.Add(newConnection);
-            }
             
-            if (iterations > 100)
+            foreach (var newConnection in newConnections)
+                connectedPositions.Add(newConnection);
+            
+            if (iterations > Mathf.Pow(BoardSize.x * BoardSize.y, 2)) // the code has probably gotten stuck
             {
-                Debug.LogWarning("okay something went wrong");
+                Debug.LogWarning($"Something has gone wrong in searching connected tiles at {x},{y}");
                 break;
             }
         }
 
         return connectedPositions.ToArray();
     }
-
+    
     public Matchable[] GetConnectedMatchablesAt(int x, int y)
     {
         List<Matchable> result = new();
@@ -223,6 +230,52 @@ public class GameBoard
         }
 
         return result.ToArray();
+    }
+    
+    /// <summary>
+    /// All tiles above empty tile(s) on the provided X position are moved down.
+    /// </summary>
+    /// <returns>Effected matchables</returns>
+    public Matchable[] ApplyGravityAtColumn(int x)
+    {
+        if (!IsValidPosition(x, 0))
+        {
+            Debug.LogError("Board column is out of bounds!");
+            return Array.Empty<Matchable>();
+        }
+
+        int gravity = 0;
+        List<Matchable> effectedMatchables = new();
+        
+        for (int y = BoardSize.y - 1; y >= 0; y--)
+        {
+            if (TileIsEmptyOrInvalid(x, y))
+            {
+                gravity += 1;
+            }
+            else if (gravity > 0)
+            {
+                effectedMatchables.Add(GetMatchableAtPosition(x,y));
+                MoveMatchableToPosition(x,y, x,y + gravity);
+            }
+        }
+        
+        return effectedMatchables.ToArray();
+    }
+
+    /// <summary>
+    /// All tiles above empty tile(s) are moved down.
+    /// </summary>
+    /// <returns>Effected matchables</returns>
+    public Matchable[] ApplyGravity()
+    {
+        List<Matchable> effectedMatchables = new();
+        for (int x = 0; x < BoardSize.x; x++)
+        {
+            effectedMatchables.AddRange(ApplyGravityAtColumn(x));
+        }
+
+        return effectedMatchables.ToArray();
     }
 
     #endregion

@@ -1,13 +1,18 @@
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Connects the "logical" GameBoard to Unity, handles invoking Matchable events.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     private GameBoard board;
     public GameSettings settings;
 
     public UnityEvent<Matchable, MatchableSpawnType> matchableSpawned;
+
+    private bool canInteract = true;
 
     void Start()
     {
@@ -24,9 +29,18 @@ public class GameManager : MonoBehaviour
 
     public void OnMatchableClicked(Matchable matchable)
     {
-        RemoveConnectedMatchablesTo(matchable);
-        ApplyGravity();
-        FillBoard(MatchableSpawnType.Fall);
+        if (!canInteract)
+            return;
+        canInteract = false;
+        
+        DOTween.Sequence().
+            AppendCallback(() => { RemoveConnectedMatchablesTo(matchable); }). // remove connected
+            AppendInterval(0.2f).
+            AppendCallback(ApplyGravity). // gravity
+            AppendInterval(0.5f).
+            AppendCallback(() => { FillBoard(MatchableSpawnType.Fall); }). // fill empty tiles
+            AppendInterval(0.5f).
+            AppendCallback(() => { canInteract = true; });
     }
 
     private void RemoveConnectedMatchablesTo(Matchable matchable)
@@ -45,7 +59,8 @@ public class GameManager : MonoBehaviour
 
         foreach (var matchable in fallenMatchables)
         {
-            matchable.OnMoved();
+            // this could have been done in GameBoard but figured it was better to keep the events in one place
+            matchable.OnMoved(); 
         }
     }
 

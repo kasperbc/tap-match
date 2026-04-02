@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
+/// <summary>
+/// Manages UIMatchables and keeping the player visuals in check with the game board, mainly by using events from Matchables.
+/// </summary>
 public class UIBoardManager : MonoBehaviour
 {
     [SerializeField] private GameObject boardTileBackgroundPrefab;
@@ -32,6 +37,20 @@ public class UIBoardManager : MonoBehaviour
     {
         UIMatchable uiMatchable = Instantiate(boardMatchablePrefab, tiles[matchable.position].transform).GetComponent<UIMatchable>();
         uiMatchable.SetMatchable(matchable);
+
+        if (spawnType == MatchableSpawnType.Fall)
+        {
+            var uiImg = uiMatchable.GetComponent<Image>();
+
+            var uiColor = matchable.type.color;
+            uiColor.a = 0;
+            uiImg.color = uiColor;
+            uiImg.DOFade(matchable.type.color.a, 0.15f);
+
+            uiMatchable.GetComponent<RectTransform>().localPosition += Vector3.up * 400;
+                
+            uiMatchable.BounceToParentTile();
+        }
         
         // subscribe to events
         uiMatchable.clicked.AddListener(gameManager.OnMatchableClicked);
@@ -47,6 +66,7 @@ public class UIBoardManager : MonoBehaviour
             return;
         
         uiMatchables[matchable].OnRemoved();
+        uiMatchables.Remove(matchable);
     }
 
     private void OnMatchableMoved(object sender, Vector2Int newPosition)
@@ -57,6 +77,6 @@ public class UIBoardManager : MonoBehaviour
         if (!tiles.ContainsKey(newPosition))
             return;
         
-        uiMatchables[matchable].transform.SetParent(tiles[newPosition], false);
+        uiMatchables[matchable].OnMoved(tiles[newPosition]);
     }
 }

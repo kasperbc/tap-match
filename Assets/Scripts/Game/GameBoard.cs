@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 /// <summary>
-/// Handles logic for the tile grid.
+/// Handles logic for the game board.
 /// </summary>
 public class GameBoard
 {

@@ -6,11 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8c4d9f88-a27f-4f2e-ac6c-38c58de92e99" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tap-match/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tap-match/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Default Game Settings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Default Game Settings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Data/MatchableType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Data/MatchableType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameBoard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Matchable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Matchable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/MatchableSpawnType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/MatchableSpawnType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIBoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIBoardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIMatchable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIMatchable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +109,7 @@
       <workItem from="1774963411169" duration="9258000" />
       <workItem from="1774972931518" duration="639000" />
       <workItem from="1775040131856" duration="11296000" />
-      <workItem from="1775125149765" duration="2915000" />
+      <workItem from="1775125149765" duration="7162000" />
     </task>
     <servers />
   </component>

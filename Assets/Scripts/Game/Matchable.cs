@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// The "logical" representation of a matchable, mainly stores data and handles events for when the state of it is changed.
+/// </summary>
 public class Matchable
 {
     public MatchableType type;

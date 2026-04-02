@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b779400d7745d4491f6a1f42974c95, type: 3}
+  m_Name: Portrait Board
+  m_EditorClassIdentifier: Assembly-CSharp::GameSettings
+  boardSize: {x: 5, y: 10}
+  matchableTypes:
+  - {fileID: 11400000, guid: d4d63a7c7311f7444acf6565c533136b, type: 2}
+  - {fileID: 11400000, guid: 8c433f28b8bd7314cae6b9b4a215bd79, type: 2}
+  - {fileID: 11400000, guid: 649486c12d82c1a43b131f133ec27023, type: 2}
+  - {fileID: 11400000, guid: 338bc4de55733a8499104d6391f0aff7, type: 2}
+  - {fileID: 11400000, guid: ce862f361ddc04e488b120f73c30c983, type: 2}

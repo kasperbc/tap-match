@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b779400d7745d4491f6a1f42974c95, type: 3}
-  m_Name: Default Game Settings
+  m_Name: Landscape Board
   m_EditorClassIdentifier: Assembly-CSharp::GameSettings
-  boardSize: {x: 10, y: 7}
+  boardSize: {x: 10, y: 5}
   matchableTypes:
-  - color: {r: 1, g: 0, b: 0, a: 1}
-  - color: {r: 1, g: 0.8987113, b: 0, a: 1}
-  - color: {r: 1, g: 0, b: 0.89224863, a: 1}
+  - {fileID: 11400000, guid: d4d63a7c7311f7444acf6565c533136b, type: 2}
+  - {fileID: 11400000, guid: 8c433f28b8bd7314cae6b9b4a215bd79, type: 2}
+  - {fileID: 11400000, guid: 649486c12d82c1a43b131f133ec27023, type: 2}
+  - {fileID: 11400000, guid: 338bc4de55733a8499104d6391f0aff7, type: 2}
+  - {fileID: 11400000, guid: ce862f361ddc04e488b120f73c30c983, type: 2}

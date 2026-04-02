@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class UIBoardManager : MonoBehaviour
 
     private Dictionary<Vector2Int, RectTransform> tiles = new();
     private GameManager gameManager;
+
+    private Dictionary<Matchable, UIMatchable> uiMatchables = new();
     
     public void OnGameSetup(GameManager game)
     {
@@ -25,11 +28,35 @@ public class UIBoardManager : MonoBehaviour
         gameManager = game;
     }
 
-    public void OnMatchableSpawn(Matchable matchable, MatchableSpawnType spawnType)
+    private void OnMatchableSpawn(Matchable matchable, MatchableSpawnType spawnType)
     {
         UIMatchable uiMatchable = Instantiate(boardMatchablePrefab, tiles[matchable.position].transform).GetComponent<UIMatchable>();
         uiMatchable.SetMatchable(matchable);
         
+        // subscribe to events
         uiMatchable.clicked.AddListener(gameManager.OnMatchableClicked);
+        matchable.Removed += OnMatchableRemoved;
+        matchable.Moved += OnMatchableMoved;
+        
+        uiMatchables.Add(matchable, uiMatchable);
+    }
+
+    private void OnMatchableRemoved(object sender, EventArgs _)
+    {
+        if (!(sender is Matchable matchable && uiMatchables.ContainsKey(matchable))) // matchable exists
+            return;
+        
+        uiMatchables[matchable].OnRemoved();
+    }
+
+    private void OnMatchableMoved(object sender, Vector2Int newPosition)
+    {
+        if (!(sender is Matchable matchable && uiMatchables.ContainsKey(matchable))) // matchable exists
+            return;
+
+        if (!tiles.ContainsKey(newPosition))
+            return;
+        
+        uiMatchables[matchable].transform.SetParent(tiles[newPosition], false);
     }
 }

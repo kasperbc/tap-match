@@ -6,16 +6,21 @@ public class Matchable
     public MatchableType type;
     public Vector2Int position;
 
-    public event Action removed;
-    
+    public event EventHandler Removed;
+    public event EventHandler<Vector2Int> Moved;
     
     public Matchable(MatchableType _type)
     {
         type = _type;
     }
 
-    public void Remove()
+    public void OnRemoved()
     {
-        removed?.Invoke();
+        Removed?.Invoke(this, null);
+    }
+
+    public void OnMoved()
+    {
+        Moved?.Invoke(this, position);
     }
 }

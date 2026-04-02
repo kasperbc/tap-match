@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class UIMatchable : MonoBehaviour
 {
-    private Matchable matchable;
+    public Matchable matchable;
     
     public UnityEvent<Matchable> clicked;
     
@@ -13,8 +14,6 @@ public class UIMatchable : MonoBehaviour
     {
         GetComponent<Image>().color = _matchable.type.color;
         matchable = _matchable;
-
-        matchable.removed += OnRemoved;
     }
 
     public void OnClicked()
@@ -22,7 +21,7 @@ public class UIMatchable : MonoBehaviour
         clicked.Invoke(matchable);
     }
 
-    private void OnRemoved()
+    public void OnRemoved()
     {
         Destroy(gameObject);
     }

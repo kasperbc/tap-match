@@ -70,6 +70,9 @@ public class GameBoard
 
     public void RemoveMatchableAtPosition(int x, int y) => SetMatchableAtPosition(x, y, null);
 
+    public void RemoveMatchable(Matchable matchable) =>
+        RemoveMatchableAtPosition(matchable.position.x, matchable.position.y);
+
     public void MoveMatchableToPosition(int oldX, int oldY, int newX, int newY)
     {
         Matchable matchable = GetMatchableAtPosition(oldX, oldY);

@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// Handles logic for the game board.
 /// </summary>
-public class GameBoard
+public class GameBoard  
+    // handling game logic probably could have been done in the GameManager as well,
+    // but as I understand it, white-box testing is a little easier this way
 {
     private readonly Vector2Int[] directions = new Vector2Int[]
     {

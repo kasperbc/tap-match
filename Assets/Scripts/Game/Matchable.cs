@@ -7,7 +7,7 @@ using UnityEngine;
 public class Matchable
 {
     public MatchableType type;
-    public Vector2Int position;
+    public Vector2Int position; // 0,0 = top left
 
     public event EventHandler Removed;
     public event EventHandler<Vector2Int> Moved;

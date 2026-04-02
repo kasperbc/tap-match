@@ -20,7 +20,10 @@ public class GameManager : MonoBehaviour
         board = new GameBoard();
 
         board.InitializeBoard(settings.boardSize.x, settings.boardSize.y);
-        BroadcastMessage("OnGameSetup", this);
+        BroadcastMessage("OnGameSetup", this);   // most "pain-free" way to do a "start" message & link objects to this
+                                                            // that I could think of,
+                                                            // trade-off being that everything related to the game
+                                                            // has to be a child object of this
         
         FillBoard(MatchableSpawnType.Appear);
 

@@ -28,16 +28,20 @@ public class UIBoardManager : MonoBehaviour
                 tiles.Add(new Vector2Int(x, y), backgroundTile.GetComponent<RectTransform>());
             }
         }
-
+        
+        // subscribe to spawn event
         game.matchableSpawned.AddListener(OnMatchableSpawn);
+        
         gameManager = game;
     }
 
     private void OnMatchableSpawn(Matchable matchable, MatchableSpawnType spawnType)
     {
+        // create UI matchable
         UIMatchable uiMatchable = Instantiate(boardMatchablePrefab, tiles[matchable.position].transform).GetComponent<UIMatchable>();
         uiMatchable.SetMatchable(matchable);
-
+        
+        // fall animation if applicable
         if (spawnType == MatchableSpawnType.Fall)
         {
             var uiImg = uiMatchable.GetComponent<Image>();
@@ -57,6 +61,7 @@ public class UIBoardManager : MonoBehaviour
         matchable.Removed += OnMatchableRemoved;
         matchable.Moved += OnMatchableMoved;
         
+        // add to dictionary
         uiMatchables.Add(matchable, uiMatchable);
     }
 
@@ -65,13 +70,15 @@ public class UIBoardManager : MonoBehaviour
         if (!(sender is Matchable matchable && uiMatchables.ContainsKey(matchable))) // matchable exists
             return;
         
+        
         uiMatchables[matchable].OnRemoved();
         uiMatchables.Remove(matchable);
     }
 
     private void OnMatchableMoved(object sender, Vector2Int newPosition)
     {
-        if (!(sender is Matchable matchable && uiMatchables.ContainsKey(matchable))) // matchable exists
+        // null checks
+        if (!(sender is Matchable matchable && uiMatchables.ContainsKey(matchable)))
             return;
 
         if (!tiles.ContainsKey(newPosition))

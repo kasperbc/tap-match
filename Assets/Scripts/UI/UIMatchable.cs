@@ -10,7 +10,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class UIMatchable : MonoBehaviour
 {
-    public Matchable matchable;
+    public Matchable Matchable;
     
     public UnityEvent<Matchable> clicked;
 
@@ -28,14 +28,16 @@ public class UIMatchable : MonoBehaviour
     public void SetMatchable(Matchable _matchable)
     {
         GetComponent<Image>().color = _matchable.type.color;
-        matchable = _matchable;
+        Matchable = _matchable;
     }
     
     // Used by Event Trigger
     public void OnClicked()
     {
-        clicked.Invoke(matchable);
+        clicked.Invoke(Matchable);
     }
+
+    #region Animation
 
     public void OnRemoved()
     {
@@ -52,4 +54,6 @@ public class UIMatchable : MonoBehaviour
     }
     
     public void BounceToParentTile() => RectTransform.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.OutBounce);
+    
+    #endregion
 }
